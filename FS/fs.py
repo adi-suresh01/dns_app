@@ -18,7 +18,7 @@ def register():
     if not data or 'hostname' not in data or 'ip' not in data or 'as_ip' not in data or 'as_port' not in data:
         abort(400)      # bad request
 
-    hostname - data['hostname']
+    hostname = data['hostname']
     ip_address = data['ip']
     as_ip = data['as_ip']
     as_port = data['as_port']

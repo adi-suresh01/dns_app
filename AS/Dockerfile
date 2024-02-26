@@ -6,6 +6,6 @@ COPY . /app
 
 RUN pip install flask
 
-EXPOSE 8080
+EXPOSE 53533
 
-CMD ["python", "./us.py"]
+CMD ["python", "./as.py"]
