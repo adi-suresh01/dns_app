@@ -28,7 +28,7 @@ def handle_dns_query(data):
     requested_record = dns_records.get(data['NAME'])
 
     if requested_record:
-        dns_response = f"TYPE-A\nNAME={data['NAME']}\nVALUE={requested_record['VALUE']}\nTTL={requested_record['TTL']}"
+        dns_response = f"TYPE=A\nNAME={data['NAME']}\nVALUE={requested_record['VALUE']}\nTTL={requested_record['TTL']}"
     else:
         dns_response = ""
 
