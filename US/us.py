@@ -15,10 +15,15 @@ def fibonacci():
     if not all([hostname, fs_port, number, as_ip, as_port]):
         abort(400)
 
-        try:
-            ip_address = resolve_hostname(hostname, as_ip, as_port)
-        except Exception as e:
-            return str(e), 500
+    try:
+        ip_address = resolve_hostname(hostname, as_ip, as_port)
+    except Exception as e:
+        return str(e), 500
+
+    try:
+        fibonacci_number = query_fibonacci_server(ip_address, fs_port, number)
+    except Exception as e:
+        return str(e), 500
 
     return str(fibonacci_number), 200
 
