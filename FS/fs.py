@@ -54,7 +54,7 @@ def fibonacci():
 
 
 def register_with_as(hostname, ip_address, as_ip, as_port):
-    dns_message = f"TYPE=A\nNAME={hostname}\nVALUE={ip_address}\nTTL=103"
+    dns_message = "TYPE=A\nNAME={}\nVALUE={}\nTTL=103".format(hostname, ip_address)
 
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as udp_socket:
         udp_socket.sendto(dns_message.encode(), (as_ip, as_port))

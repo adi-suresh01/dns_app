@@ -32,19 +32,20 @@ def fibonacci():
 
 
 def resolve_hostname(hostname, as_ip, as_port):
-    response = requests.get(f'http://{as_ip}:{as_port}/dns_lookup?hostname={hostname}')
+    url = 'http://{}:{}/dns_lookup?hostname={}'.format(as_ip, as_port, hostname)
+    response = requests.get(url)
     if response.status_code != 200:
-        raise Exception(f"Failed to resolve hostname {hostname}: {response.text}")
+        raise Exception("Failed to resolve hostname {}: {}".format(hostname, response.text))
     return response.text
 
 
 def query_fibonacci_server(ip_address, fs_port, number):
-    response = requests.get(f'http://{ip_address}:{fs_port}/fibonacci?number={number}')
+    url = 'http://{}:{}/fibonacci?number={}'.format((ip_address, fs_port, number))
+    response = requests.get(url)
     if response.status_code != 200:
-        raise Exception(f"Failed to get Fibonacci number from server {ip_address}: {response.text}")
+        raise Exception("Failed to get Fibonacci number from server {}: {}".format(ip_address, response.text))
     return response.text
 
 
 if __name__ == '__main__':
     app.run(port=8080)
-
